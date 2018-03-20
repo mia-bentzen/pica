@@ -37,6 +37,10 @@ function love.draw()
 end
 ```
 
+## Scaling Modes
+- default: Just scales up your game without any squishing or stretching. Results in black border. Works well with anti-aliasing when drawing the screen.
+- integer: Same as default, but it only scales up in integer increments. This means it won't ever have pixels of an uneven size. Results in more black borders
+
 ## Full example
 ```lua
 local Screen = require 'pica'
