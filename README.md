@@ -2,11 +2,13 @@
 PICA is a simple library for creating pixel art games in LOVE. Basically what it does is let you make your game run in a low resolution (for example 320x240) and then it handles the scaling for you.
 
 This is useful for pixel art games, fantasy consoles, emulators, ect.
+
 ## Usage
 First drop the module in your project and import it.
 ```lua
 local Screen = require 'pica'
 ```
+
 ### Creating a Screen
 screens are basically a wrapper around LOVE's canvases.
 ```lua
@@ -16,6 +18,7 @@ function love.load()
     ...
 end
 ```
+
 ### Drawing to it
 ```lua
 screen:draw(function ()
@@ -35,6 +38,21 @@ function love.draw()
     end)
     screen:present()
 end
+```
+
+### Getting Mouse Coordinates
+PICA provides a method to transform window coordinates into the coordinates of the canvas.
+Local variables included mainly for clarity.
+```lua
+-- Doesn't have to be in love.draw, but makes this code simpler.
+function love.draw()
+    local mx, my = love.mouse.getPosition()
+    mx, my = screen:transformCoords(mx, my)
+
+    screen:draw(function ()
+        love.graphics.clear()
+        love.graphics.circle('fill', mx, my, 4)
+    end)
 ```
 
 ## Scaling Modes
