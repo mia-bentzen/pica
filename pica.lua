@@ -67,7 +67,7 @@ local Screen = function (width, height, scaling_mode)
     end
     function screen:present ()
         local x,y,s = scaling_modes[scaling_mode](self)
-        love.graphics.draw(self.canvas, x, y, 0, s)
+        love.graphics.draw(self.canvas, math.floor(x), math.floor(y), 0, s)
     end
 
     function screen:transformCoords(x, y)
