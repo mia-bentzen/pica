@@ -62,7 +62,10 @@ local Screen = function (width, height, scaling_mode)
 
     function screen:draw (func)
         love.graphics.setCanvas(self.canvas)
+        love.graphics.push()
+        love.graphics.origin()
         func()
+        love.graphics.pop()
         love.graphics.setCanvas()
     end
     function screen:present ()
