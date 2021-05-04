@@ -47,7 +47,7 @@ Local variables included mainly for clarity.
 -- Doesn't have to be in love.draw, but makes this code simpler.
 function love.draw()
     local mx, my = love.mouse.getPosition()
-    mx, my = screen:transformCoords(mx, my)
+    mx, my = screen:transform(mx, my)
 
     screen:draw(function ()
         love.graphics.clear()
@@ -56,8 +56,8 @@ function love.draw()
 ```
 
 ## Scaling Modes
-- default: Just scales up your game without any squishing or stretching. Results in black border. Works well with anti-aliasing when drawing the screen.
-- integer: Same as default, but it only scales up in integer increments. This means it won't ever have pixels of an uneven size. Results in more black borders
+- default: Just scales up your game without any squishing or stretching. Results in black border. Works well with really small resolutions.
+- integer: Same as default, but it only scales up in integer increments. This means it won't ever have pixels of an uneven size. Results in more black borders.
 
 ## Full example
 ```lua
